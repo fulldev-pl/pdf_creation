@@ -1,0 +1,20 @@
+{
+  "name": "pdf_creation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "pdf": "tsc && node ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "html-minifier": "^4.0.0",
+    "puppeteer": "^22.15.0"
+  },
+  "devDependencies": {
+    "@types/html-minifier": "^4.0.5",
+    "typescript": "^5.5.4"
+  }
+}

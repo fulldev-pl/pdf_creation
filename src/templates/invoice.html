@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Invoice template</title>
+
+    <style>
+      body,
+      html {
+        font-family: 'Roboto', sans-serif;
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-weight: 700;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+      }
+      header img {
+        display: block;
+        max-height: 50px;
+      }
+      .billing {
+        display: flex;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #ccc;
+      }
+      .billing > div {
+        width: 50%;
+      }
+      .billing h2 {
+        margin-bottom: 5px;
+      }
+      .payment {
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #ccc;
+      }
+      .invoice-items table {
+        width: 100%;
+      }
+      .invoice-items table th,
+      .invoice-items table td {
+        padding: 10px 0;
+        border-bottom: 1px solid #ccc;
+      }
+      .invoice-items table tfoot td {
+        font-weight: 700;
+      }
+      .invoice-items table thead {
+        text-align: left;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Invoice nr {{INVOICE_ID}}</h1>
+
+      <img src="{{LOGO_URL}}" alt="Logo" />
+    </header>
+
+    <div class="billing">
+      <div class="seller">
+        <h2>Seller</h2>
+        <p>{{SELLER_NAME}}</p>
+        <p>{{SELLER_ADDRESS}}</p>
+        <p>{{SELLER_ZIP}} {{SELLER_CITY}}</p>
+        <p>{{SELLER_TAX_ID}}</p>
+        <p>{{SELLER_PHONE}}</p>
+        <p>{{SELLER_EMAIL}}</p>
+      </div>
+
+      <div class="buyer">
+        <h2>Buyer</h2>
+        <p>{{BUYER_NAME}}</p>
+        <p>{{BUYER_ADDRESS}}</p>
+        <p>{{BUYER_ZIP}} {{BUYER_CITY}}</p>
+        <p>{{BUYER_PHONE}}</p>
+        <p>{{BUYER_EMAIL}}</p>
+      </div>
+    </div>
+
+    <div class="payment">
+      <p>Date of issue: {{INVOICE_CREATED_AT}}</p>
+      <p>Due date: {{INVOICE_DUE_DATE}}</p>
+      <p>Bank account number: {{SELLER_BANK_ACCOUNT}}</p>
+    </div>
+
+    <div class="invoice-items">
+      <table cellpadding="10px">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total price</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{INVOICE_ITEMS_TABLE}}
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3" style="border: 0 !important"></td>
+            <td>Sum</td>
+            <td>{{TOTAL_PRICE}} {{CURRENCY}}</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </body>
+</html>
